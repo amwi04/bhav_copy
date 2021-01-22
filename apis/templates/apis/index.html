@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BhavCopy</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://unpkg.com/vue@next"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+</head>
+<body>
+  <nav>
+    <div class="nav-wrapper">
+      <a href="" class="brand-logo center">BhavCopy</a>
+      <ul id="nav-mobile" class="left hide-on-med-and-down">
+      </ul>
+    </div>
+  </nav>
+    <div class="container">
+      <!-- Page Content goes here -->
+
+      <div class="row"  id="app">
+        <form class="col s12">
+          <div class="row">
+            <div class="input-field col s12" >
+              <input type="text" @click="headers" autocomplete="off" v-model="userinput">
+              <label for="icon_prefix2">SC_NAME</label>
+              <table class="highlight">
+                <thead>
+                  <tr>
+                    <th v-for= "h in header">
+                      ${ h }
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr v-for="dat in data">
+                    <td v-for="d in dat">
+                        ${d}
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </form>
+        <ul>
+          <!-- <li v-for="book in books">
+            <p> ${ book } </p> -->
+
+          </li>
+        </ul>
+    </div>
+
+
+
+</body>
+
+
+<script>
+
+  const app =  Vue.createApp({
+    delimiters: ['${', '}'],
+    data(){
+      return{
+        userinput : '',
+        value: '',
+        data:'',
+        header:''
+      }
+    },
+    watch: {
+      userinput: function(val) {
+        //console.log('jhgyt',val)
+        fetch(window.location.href+'get_sc/'+val)
+        .then(response => response.json())
+        .then(data => (this.data = data));
+
+      }
+    },
+    methods:{
+      headers(){
+        fetch(window.location.href+'get_header/')
+        .then(response => response.json())
+        .then(data => (this.header = data));
+      }
+    }
+
+  })
+
+  app.mount('#app')
+
+</script>
