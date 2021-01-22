@@ -128,3 +128,7 @@ dmypy.json
 # Pyre type checker
 .pyre/
 db.sqlite3
+celerybeat-schedule.db
+dump.rdb
+random
+.vscode/*

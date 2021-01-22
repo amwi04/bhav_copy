@@ -106,7 +106,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Kolkata'
 
 USE_I18N = True
 
@@ -122,3 +122,9 @@ STATIC_URL = '/static/'
 
 REDIS_HOST= 'localhost'
 REDIS_PORT = 6379
+
+CELERY_TIMEZONE = 'Asia/Kolkata'
+CELERY_TASK_TRACK_STARTED = True
+CELERY_TASK_TIME_LIMIT = 30 * 60
+BROKER_URL = 'redis://localhost:6379/1'
+CELERY_RESULT_BACKEND = 'redis://localhost:6379'
