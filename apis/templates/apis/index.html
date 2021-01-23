@@ -7,6 +7,7 @@
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="https://unpkg.com/vue@next"></script>
@@ -25,10 +26,10 @@
       <!-- Page Content goes here -->
 
       <div class="row"  id="app">
-        <form class="col s12">
+
           <div class="row">
             <div class="input-field col s12" >
-              <input type="text" @click="headers" autocomplete="off" v-model="userinput">
+              <input type="text" @click="headers"  autocomplete="off" v-model="userinput">
               <label for="icon_prefix2">SC_NAME</label>
               <table class="highlight">
                 <thead>
@@ -48,16 +49,14 @@
               </table>
             </div>
           </div>
-        </form>
-        <ul>
-          <!-- <li v-for="book in books">
-            <p> ${ book } </p> -->
 
-          </li>
-        </ul>
+
+    <div class="fixed-action-btn">
+      <a class="btn-floating btn-large red" @click="csv_download" >
+        <i class="large material-icons" >file_download</i>
+      </a>
     </div>
-
-
+     </div>
 
 </body>
 
@@ -77,6 +76,7 @@
     watch: {
       userinput: function(val) {
         //console.log('jhgyt',val)
+        this.value = val
         fetch(window.location.href+'get_sc/'+val)
         .then(response => response.json())
         .then(data => (this.data = data));
@@ -88,6 +88,19 @@
         fetch(window.location.href+'get_header/')
         .then(response => response.json())
         .then(data => (this.header = data));
+      },
+      csv_download(){
+
+        let csvdown = "data:text/csv;charset=utf-8,"
+        csvdown += this.header.toString()+'\n'
+        for (i = 0; i < this.data.length; i++) {
+          csvdown += this.data[i].toString()+'\n'
+        }
+        const data_link = encodeURI(csvdown)
+        const link = document.createElement("a")
+        link.setAttribute("href", data_link)
+        link.setAttribute("download", "export.csv")
+        link.click()
       }
     }
 
