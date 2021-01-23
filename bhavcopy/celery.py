@@ -25,12 +25,6 @@ app.config_from_object('django.conf:settings', namespace='CELERY')
 app.autodiscover_tasks(settings.INSTALLED_APPS)
 
 @app.task
-def test():
-    print(datetime.datetime.now())
-
-
-
-@app.task
 def get_new_data():
     # do something
     print('start')
@@ -45,6 +39,7 @@ def get_new_data():
             "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.75 Safari/537.36",
             "X-Requested-With": "XMLHttpRequest"
             }
+    print(url)
     rq = requests.get(url, headers=header)
     with open('/tmp/EQ'+get_date+'_CSV.ZIP', 'wb') as fd:
         fd.write(rq.content)
@@ -65,7 +60,7 @@ app.conf.beat_schedule = {
 
     'add-data': {
         'task': 'bhavcopy.celery.get_new_data',
-        'schedule': crontab(),
+        'schedule': crontab(hour=18, minute=2, day_of_week='1-5'),
     },
 }
 
