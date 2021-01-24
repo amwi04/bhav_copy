@@ -1,1 +1,1 @@
-web: gunicorn bhavcopy.asgi
+web: gunicorn bhavcopy.asgi -k uvicorn.workers.UvicornWorker

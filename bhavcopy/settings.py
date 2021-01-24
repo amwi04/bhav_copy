@@ -16,12 +16,12 @@ import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
+from django.core.management.utils import get_random_secret_key
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'l_sp^d*xue)p)v9+y_g3j(zx%2yjh1m@amkdcy+%ox7f4gvhqp'
+SECRET_KEY = get_random_secret_key()
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -121,6 +121,8 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = Path(BASE_DIR, 'static')
+STATICFILES_DIRS = (Path(BASE_DIR, 'static'),)
+print(STATICFILES_DIRS)
 REDIS_HOST= 'localhost'
 REDIS_PORT = 6379
 
