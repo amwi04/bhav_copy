@@ -102,7 +102,12 @@
         link.setAttribute("download", this.value+".csv")
         link.click()
       }
-    }
+    },
+      beforeMount(){
+        fetch(window.location.href+'get_sc/')
+        .then(response => response.json())
+        .then(data => (this.data = data));
+      }
 
   })
 

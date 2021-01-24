@@ -10,7 +10,7 @@ r = redis.StrictRedis(host=settings.REDIS_HOST,
 def index(request):
     return render(request,'apis/index.html')
 
-def get_sc_name(request,sc_name):
+def get_sc_name(request,sc_name=''):
     data = []
     for i in r.scan_iter( match='*'+sc_name.upper()+'*', count=100000000):
         data.append( r.get(i).decode().split(','))
