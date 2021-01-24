@@ -99,7 +99,11 @@
         const data_link = encodeURI(csvdown)
         const link = document.createElement("a")
         link.setAttribute("href", data_link)
-        link.setAttribute("download", this.value+".csv")
+        if (this.value){
+          link.setAttribute("download", this.value+".csv")
+        }else{
+          link.setAttribute("download", "all.csv")
+        }
         link.click()
       }
     },
