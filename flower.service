@@ -1,0 +1,11 @@
+[Unit]
+Description=flower daemon
+After=network.target
+
+[Service]
+Group=www-data
+WorkingDirectory=/home/ubuntu/bhav_copy
+ExecStart=/home/ubuntu/env/bin/celery -A bhavcopy flower --port=5555
+
+[Install]
+WantedBy=multi-user.target

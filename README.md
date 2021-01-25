@@ -4,3 +4,9 @@
 - Django is used for apis
 - Vue to render table and download CSV button
 
+## Commands
+
+- sudo systemctl start redis
+- sudo systemctl start daphne
+- sudo systemctl start celery
+- sudo systemctl start flower
