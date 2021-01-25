@@ -109,6 +109,9 @@
       }
     },
       beforeMount(){
+        fetch(window.location.href+'get_header/')
+        .then(response => response.json())
+        .then(data => (this.header = data));
         fetch(window.location.href+'get_sc/')
         .then(response => response.json())
         .then(data => (this.data = data));
