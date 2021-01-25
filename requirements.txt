@@ -21,10 +21,12 @@ h11==0.12.0
 httptools==0.1.1
 humanize==3.2.0
 idna==2.10
+ipython==7.19.0
+ipython-genutils==0.2.0
 jedi==0.18.0
 kombu==4.6.11
 numpy==1.19.5
-pandas==1.1.5
+pandas==1.2.1
 parso==0.8.1
 pexpect==4.8.0
 pickleshare==0.7.5
@@ -38,7 +40,10 @@ python-dateutil==2.8.1
 pytz==2020.5
 redis==3.5.3
 requests==2.25.1
+six==1.15.0
+sqlparse==0.4.1
 tornado==6.1
+traitlets==5.0.5
 urllib3==1.26.2
 uvicorn==0.13.3
 uvloop==0.14.0
