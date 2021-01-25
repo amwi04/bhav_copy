@@ -121,7 +121,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 #STATIC_ROOT = Path(BASE_DIR, 'static')
 STATICFILES_DIRS = (Path(BASE_DIR, 'static'),)
-print(STATICFILES_DIRS)
+
 REDIS_HOST= 'localhost'
 REDIS_PORT = 6379
 
