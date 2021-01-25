@@ -30,7 +30,7 @@
 
           <div class="row">
             <div class="input-field col s12" >
-              <input type="text" @click="headers"  autocomplete="off" v-model="userinput">
+              <input type="text" autocomplete="off" v-model="userinput">
               <label for="icon_prefix2">SC_NAME</label>
               <table class="highlight">
                 <thead>
@@ -85,11 +85,6 @@
       }
     },
     methods:{
-      headers(){
-        fetch(window.location.href+'get_header/')
-        .then(response => response.json())
-        .then(data => (this.header = data));
-      },
       csv_download(){
 
         let csvdown = "data:text/csv;charset=utf-8,"
